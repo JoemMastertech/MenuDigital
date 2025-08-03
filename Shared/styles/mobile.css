@@ -1,8 +1,8 @@
 /* =================================================================
-   SISTEMA MÓVIL INDEPENDIENTE - COCTELERÍA
+   SISTEMA MÓVIL COMPLEMENTARIO - INTEGRADO CON MAIN.CSS
    ================================================================= */
 
-/* Variables específicas para móviles */
+/* Variables específicas para móviles - sin conflictos */
 :root {
   --mobile-sidebar-width: 140px;
   --mobile-padding: 8px;
@@ -13,149 +13,73 @@
 }
 
 /* =================================================================
-   MÓVIL LANDSCAPE - COMPORTAMIENTO DE ESCRITORIO
+   MÓVIL LANDSCAPE - INTEGRADO CON SISTEMA PRINCIPAL
    ================================================================= */
 @media (max-width: 480px) and (orientation: landscape) {
-  /* Reset del layout para landscape */
+  /* Optimizaciones específicas para móvil landscape */
   #app {
-    margin: 0 !important;
-    padding: 0 !important;
-    width: 100vw !important;
-    height: 100vh !important;
-    overflow: hidden !important;
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden;
   }
   
-  /* Contenedor principal para landscape - sin sidebar por defecto */
   .content-wrapper {
-    display: flex !important;
-    flex-direction: row !important;
-    width: 95vw !important;
-    max-width: 95vw !important;
-    height: 100vh !important;
-    margin: 0 auto !important;
-    margin-left: 2.5vw !important;
-    padding: 0 !important;
+    width: 95vw;
+    margin: 0 auto;
+    height: 100vh;
     overflow-y: auto;
     overflow-x: hidden;
-    box-sizing: border-box;
-    transition: width 0.3s ease;
   }
   
-  /* Contenedor principal cuando hay sidebar activo */
-  .content-wrapper.with-sidebar {
-    width: calc(95vw - var(--mobile-sidebar-width)) !important;
-    margin-left: 2.5vw !important;
-  }
-  
-  /* Resetear contenedor flex para móvil landscape */
-  .content-container-flex {
-    display: flex !important;
-    width: 100% !important;
-    position: relative !important;
-  }
-  
-  /* Sidebar fijo en el lado derecho - comportamiento de escritorio */
+  /* Ajustes específicos para sidebar en landscape móvil */
   #order-sidebar {
-    position: fixed !important;
-    top: 0 !important;
-    right: 0 !important;
-    width: var(--mobile-sidebar-width) !important;
-    height: 100vh !important;
-    max-height: 100vh !important;
-    margin: 0 !important;
-    padding: 12px !important;
-    overflow-y: auto;
-    overflow-x: hidden;
-    border-radius: 0 !important;
-    z-index: 1000;
-    box-sizing: border-box;
-    background: var(--card-bg);
-    border-left: 2px solid var(--border-color);
-    transform: translateX(100%);
-    transition: transform 0.3s ease;
+    width: clamp(140px, 20vw, 200px);
+    padding: 8px;
   }
   
-  /* Sidebar visible cuando está activo */
-  #order-sidebar.active {
-    transform: translateX(0);
-  }
+  /* Botones de navegación - delegados al sistema principal */
+  /* Los estilos de .hamburger-btn están definidos en main.css */
   
-  /* Botón hamburguesa fijo en landscape - estilo escritorio */
-  .hamburger-btn,
-  .back-btn {
-    position: fixed !important;
-    top: 20px !important;
-    width: 50px !important;
-    height: 50px !important;
-    background: var(--card-bg) !important;
-    border: 2px solid var(--primary-color) !important;
-    color: var(--text-color) !important;
-    font-size: 1.5rem !important;
-    z-index: 1001 !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    border-radius: 8px !important;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
-  }
-  
-  .hamburger-btn {
-    left: 20px !important;
-  }
-  
-  .back-btn {
-    right: 20px !important;
-  }
-  
-  .hamburger-btn:hover,
-  .back-btn:hover {
-    background-color: var(--primary-color) !important;
-    color: var(--background-color) !important;
-  }
-  
-  /* Modo tabla - comportamiento de escritorio */
+  /* Modo tabla - optimizaciones menores */
   .product-table,
   .liquor-table {
-    width: 100% !important;
-    font-size: inherit !important;
+    font-size: var(--mobile-font-small);
   }
   
-  /* Contenido del sidebar optimizado */
+  /* Contenido del sidebar - optimizaciones específicas landscape */
   #order-sidebar h3 {
-    font-size: var(--mobile-font-base) !important;
-    margin-bottom: 6px !important;
+    font-size: var(--mobile-font-base);
+    margin-bottom: 6px;
     text-align: center;
     padding: 0;
   }
   
   .order-item {
-    padding: 3px 0 !important;
-    margin-bottom: 3px !important;
+    padding: 3px 0;
+    margin-bottom: 3px;
     border-bottom: 1px solid rgba(255,255,255,0.1);
   }
   
   .order-item-name {
-    font-size: var(--mobile-font-small) !important;
-    line-height: 1.1 !important;
+    font-size: var(--mobile-font-small);
+    line-height: 1.1;
     margin-bottom: 2px;
   }
   
   .order-item-price {
-    font-size: var(--mobile-font-tiny) !important;
+    font-size: var(--mobile-font-tiny);
     color: var(--primary-color);
   }
   
   .order-item-customization {
-    font-size: var(--mobile-font-tiny) !important;
-    margin-top: 1px !important;
+    font-size: var(--mobile-font-tiny);
+    margin-top: 1px;
     opacity: 0.8;
   }
   
   .order-total {
-    margin-top: 8px !important;
-    font-size: var(--mobile-font-base) !important;
+    margin-top: 8px;
+    font-size: var(--mobile-font-base);
     font-weight: bold;
     text-align: center;
     padding: 4px 0;
@@ -163,90 +87,38 @@
   }
   
   .order-buttons {
-    margin-top: 6px !important;
+    margin-top: 6px;
     display: flex;
     flex-direction: column;
     gap: 2px;
   }
   
   .order-buttons button {
-    font-size: var(--mobile-font-tiny) !important;
-    padding: 4px 6px !important;
-    margin: 0 !important;
+    font-size: var(--mobile-font-tiny);
+    padding: 4px 6px;
+    margin: 0;
     width: 100%;
     border-radius: 4px;
   }
   
-  /* Contenido principal optimizado */
-  #content-container {
-    padding: var(--mobile-padding) !important;
-    width: 100% !important;
-    height: 100% !important;
-    box-sizing: border-box;
-  }
-  
-  /* Grids optimizados - 3 columnas por defecto, 2 con sidebar */
-  .product-grid,
-  .category-grid {
-    grid-template-columns: repeat(3, 1fr) !important;
-    gap: var(--mobile-gap) !important;
-    padding: var(--mobile-gap) !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    margin: 0 !important;
-  }
-  
-  /* Grids con sidebar activo - 2 columnas */
-  .content-wrapper.with-sidebar .product-grid,
-  .content-wrapper.with-sidebar .category-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-  }
-  
-  /* Tarjetas de producto optimizadas con espaciado reducido */
+  /* Optimizaciones específicas para landscape móvil */
   .product-card {
-    min-height: 200px !important;
-    padding: 6px !important;
+    min-height: 180px;
+    padding: 6px;
   }
 
   .product-card .product-name {
-    font-size: var(--mobile-font-small) !important;
-    line-height: 1.2 !important;
-    margin-bottom: 2px !important;
-  }
-
-  .product-card .product-media {
-    margin-bottom: 4px !important;
+    font-size: var(--mobile-font-small);
+    line-height: 1.2;
   }
 
   .product-card .product-ingredients {
-    font-size: var(--mobile-font-tiny) !important;
+    font-size: var(--mobile-font-tiny);
   }
 
-  /* Precios con espaciado reducido en landscape */
-  .product-card.liquor-card .product-prices {
-    gap: 1px !important;
-    margin-top: 2px !important;
-  }
-  
   .product-card .price-button {
-    font-size: var(--mobile-font-tiny) !important;
-    padding: 4px 6px !important;
-  }
-  
-  /* Tablas optimizadas con reducción del 10% y ajuste hacia la izquierda */
-  .product-table,
-  .liquor-table {
-    width: 90% !important;
-    max-width: 90% !important;
-    margin: 0 !important;
-    margin-left: 5% !important;
-    padding: var(--mobile-gap) !important;
-  }
-  
-  .product-table th,
-  .product-table td {
-    padding: 4px 2px !important;
-    font-size: var(--mobile-font-small) !important;
+    font-size: var(--mobile-font-tiny);
+    padding: 4px 6px;
   }
   
   /* Navegación optimizada */
@@ -257,36 +129,26 @@
   }
   
   .nav-button {
-    font-size: var(--mobile-font-small) !important;
-    padding: 6px 8px !important;
     flex: 1;
     min-width: 80px;
   }
 }
 
 /* =================================================================
-   MÓVIL PORTRAIT - SIDEBAR INFERIOR
+   MÓVIL PORTRAIT - OPTIMIZACIONES ESPECÍFICAS
    ================================================================= */
 @media (max-width: 480px) and (orientation: portrait) {
-  /* Reset del layout para portrait */
+  /* Layout básico portrait - delegado a main.css */
   #app {
-    margin: 0 !important;
-    padding: 0 !important;
-    width: 100vw !important;
-    min-height: 100vh !important;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "header"
+      "content";
   }
   
-  /* Contenedor principal para portrait - sin sidebar lateral */
   .content-wrapper {
-    width: 95vw !important;
-    max-width: 95vw !important;
-    min-height: 100vh !important;
-    margin: 0 !important;
-    margin-left: 2.5vw !important;
-    padding: 0 !important;
-    overflow-y: auto;
-    overflow-x: hidden;
-    box-sizing: border-box;
+    grid-area: content;
+    grid-template-areas: "main";
   }
   
   /* Reducir espaciado entre nombre e imagen en tarjetas de productos */
@@ -321,30 +183,17 @@
     text-overflow: ellipsis !important;
   }
   
-  /* Resetear contenedor flex para móvil portrait */
-  .content-container-flex {
-    display: block !important;
-    width: 100% !important;
-    position: relative !important;
-    padding-bottom: 200px !important; /* Espacio para el sidebar inferior */
+  /* Ajustes específicos para grids en portrait */
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(6px, 2vw, 12px);
+    padding: clamp(6px, 2vw, 12px);
   }
   
-  #content-container {
-    padding: var(--mobile-padding) !important;
-    width: 100% !important;
-    box-sizing: border-box;
-  }
-  
-  /* Grids para portrait - 2 columnas con ancho normal */
-  .product-grid,
   .category-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-    gap: var(--mobile-gap) !important;
-    padding: var(--mobile-padding) !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    margin: 0 !important;
-    box-sizing: border-box;
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(6px, 2vw, 12px);
+    padding: clamp(6px, 2vw, 12px);
   }
   
   /* Tarjetas optimizadas para portrait */
@@ -448,32 +297,10 @@
     box-shadow: 0 6px 16px rgba(0,0,0,0.4);
   }
   
-  /* Sidebar fijo en la parte inferior para portrait - oculto por defecto */
+  /* Ajustes específicos para sidebar en portrait móvil */
   #order-sidebar {
-    position: fixed !important;
-    bottom: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    width: 100vw !important;
-    height: auto !important;
-    max-height: 180px !important;
-    margin: 0 !important;
-    padding: 12px !important;
-    overflow-y: auto;
-    overflow-x: hidden;
-    border-radius: 15px 15px 0 0 !important;
-    z-index: 1000;
-    box-sizing: border-box;
-    background: var(--card-bg);
-    border-top: 2px solid var(--border-color);
-    box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
-    transform: translateY(100%) !important;
-    transition: transform 0.3s ease !important;
-  }
-  
-  /* Mostrar sidebar solo cuando tenga contenido */
-  #order-sidebar.has-items {
-    transform: translateY(0) !important;
+    border-radius: 12px 12px 0 0;
+    padding: clamp(8px, 3vw, 16px);
   }
   
   /* Logo reducido en móviles portrait */
@@ -566,11 +393,6 @@
    OPTIMIZACIONES GENERALES MÓVILES
    ================================================================= */
 @media (max-width: 480px) {
-  /* Tipografía base */
-  body {
-    font-size: var(--mobile-font-base) !important;
-  }
-  
   /* Títulos optimizados */
   .welcome-text,
   .title-text,
@@ -578,25 +400,6 @@
     font-size: 1.6rem !important;
     text-align: center;
     margin: 10px 0;
-  }
-  
-  /* Modo tabla mínimo óptimo por defecto */
-  .product-table,
-  .liquor-table {
-    width: 100% !important;
-    font-size: var(--mobile-font-small) !important;
-    transform: scale(0.85) !important;
-    transform-origin: top left !important;
-    margin-bottom: 20px !important;
-  }
-  
-  .product-table th,
-  .product-table td,
-  .liquor-table th,
-  .liquor-table td {
-    padding: 4px 2px !important;
-    font-size: var(--mobile-font-tiny) !important;
-    line-height: 1.2 !important;
   }
   
   /* Modales optimizados */
