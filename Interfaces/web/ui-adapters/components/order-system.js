@@ -429,6 +429,12 @@ class OrderSystem {
     if (contentWrapper) {
       contentWrapper.classList.toggle('with-sidebar', shouldBeVisible);
     }
+    
+    // Also toggle class on content-container-flex for centering fallback
+    const contentContainerFlex = document.querySelector('.content-container-flex');
+    if (contentContainerFlex) {
+      contentContainerFlex.classList.toggle('sidebar-hidden', !shouldBeVisible);
+    }
   }
 
   _updateTablesMode(tables, isActive) {
