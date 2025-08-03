@@ -1289,7 +1289,7 @@ body { font-family: 'Montserrat', sans-serif; color: var(--text); background: va
   overflow-x: hidden;
   z-index: 1000;
   box-shadow: var(--glow-shadow);
-  display: none;
+  /* Removed display: none to allow responsive system to control visibility */
   transition: all 0.3s ease;
   box-sizing: border-box;
   flex-shrink: 0;
@@ -1807,37 +1807,81 @@ textarea:focus {
   }
   
   .product-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr) !important;
   }
   
   .category-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr) !important;
   }
   
   #order-sidebar {
     position: fixed !important;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 100vw;
-    max-height: 35vh;
-    z-index: 999;
-    background: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(8px);
-    border-radius: 15px 15px 0 0;
-    border: none;
-    border-top: 2px solid var(--border-color);
-    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
-    transform: translateY(100%);
-    transition: transform 0.3s ease;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100vw !important;
+    max-height: 35vh !important;
+    z-index: 999 !important;
+    background: rgba(0, 0, 0, 0.8) !important;
+    backdrop-filter: blur(8px) !important;
+    border-radius: 15px 15px 0 0 !important;
+    border: none !important;
+    border-top: 2px solid var(--border-color) !important;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3) !important;
+    transform: translateY(100%) !important;
+    transition: transform 0.3s ease !important;
   }
   
   #order-sidebar.has-items {
-    transform: translateY(0);
+    transform: translateY(0) !important;
   }
   
   #content-container {
-    padding-bottom: 35vh;
+    padding-bottom: 35vh !important;
+  }
+}
+
+/* =================================================================
+   FASE 3: LAYOUT MÓVIL - PANTALLAS PEQUEÑAS
+   ================================================================= */
+@media screen and (max-width: 768px) {
+  .content-wrapper {
+    flex-direction: column !important;
+    gap: 0 !important;
+  }
+  
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  
+  .category-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+  
+  #order-sidebar {
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100vw !important;
+    max-height: 35vh !important;
+    z-index: 999 !important;
+    background: rgba(0, 0, 0, 0.8) !important;
+    backdrop-filter: blur(8px) !important;
+    border-radius: 15px 15px 0 0 !important;
+    border: none !important;
+    border-top: 2px solid var(--border-color) !important;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3) !important;
+    transform: translateY(100%) !important;
+    transition: transform 0.3s ease !important;
+  }
+  
+  #order-sidebar.has-items {
+    transform: translateY(0) !important;
+  }
+  
+  #content-container {
+    padding-bottom: 35vh !important;
   }
 }
 
@@ -2624,11 +2668,21 @@ textarea:focus {
 
 /* Sidebar and container display states */
 .sidebar-hidden {
-  display: none !important;
+  /* Removed display: none !important to allow responsive system to work */
+  /* The responsive system will handle sidebar visibility based on orientation and screen size */
+  /* Removed transform properties to avoid conflicts with responsive system */
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
 }
 
 .sidebar-visible {
-  display: block !important;
+  /* Removed display: block !important to allow responsive system to work */
+  /* The responsive system will handle sidebar positioning based on orientation and screen size */
+  /* Removed transform properties to avoid conflicts with responsive system */
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 0.3s ease;
 }
 
 .content-hidden {

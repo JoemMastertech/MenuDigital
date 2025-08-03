@@ -418,6 +418,9 @@ class OrderSystem {
       sidebar.classList.toggle('sidebar-visible', shouldBeVisible);
       sidebar.classList.toggle('sidebar-hidden', !shouldBeVisible);
       
+      // Add has-items class for responsive system to work properly
+      sidebar.classList.toggle('has-items', hasItems);
+      
       // Use centralized helper for content wrapper sidebar class
       this._toggleContentWrapperSidebar(shouldBeVisible);
     }
@@ -430,11 +433,9 @@ class OrderSystem {
       contentWrapper.classList.toggle('with-sidebar', shouldBeVisible);
     }
     
-    // Also toggle class on content-container-flex for centering fallback
-    const contentContainerFlex = document.querySelector('.content-container-flex');
-    if (contentContainerFlex) {
-      contentContainerFlex.classList.toggle('sidebar-hidden', !shouldBeVisible);
-    }
+    // NO aplicar sidebar-hidden al content-container-flex ya que oculta todo el contenido
+    // La clase sidebar-hidden debe aplicarse solo al sidebar específico, no al contenedor padre
+    // El contenedor flex debe permanecer visible siempre para mostrar el contenido principal
   }
 
   _updateTablesMode(tables, isActive) {
